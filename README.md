@@ -97,6 +97,7 @@ typedocinc help generate
 ```txt
 Usage: typedocin generate|g [options] <path>
 
+
 prepare before and after files, enhance original documentation in <path> by mergind before and after files in the original documentation.   
 
 Options:
