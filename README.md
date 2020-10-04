@@ -24,14 +24,16 @@ Usage: typedocin [options] [command]
 Includes files in documentation generated with typedoc
 
 Options:
-  -V, --version               output the version number
-  -v, --verbose               show detail messages during execution. (default: false)
-  -h, --help                  display help for command
+  -V, --version                output the version number
+  -v, --verbose                show detail messages during execution. (default: false)
+  -h, --help                   display help for command
 
 Commands:
-  prepare|p [options] <path>  prepare original documentation in <path> by creating its before and after files
-  build|b [options] <path>    enhance original documentation in <path> by mergind before and after files in the original documentation.     
-  help [command]              display help for command
+  prepare|p [options] <path>   prepare original documentation in <path> by creating its before and after files
+  build|b [options] <path>     enhance original documentation in <path> by mergind before and after files in the original documentation.    
+  generate|g [options] <path>  prepare before and after files, enhance original documentation in <path> by mergind before and after files   
+                               in the original documentation.
+  help [command]               display help for command
 ```
 
 ## Usage
