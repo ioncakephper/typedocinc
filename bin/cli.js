@@ -46,6 +46,21 @@ program
         buildIncludes(path, options.includes, options.target, options)
     })
 
+program
+    .command('generate <path>')
+    .alias('g')
+    .description('prepare before and after files, enhance original documentation in <path> by mergind before and after files in the original documentation.')
+    .requiredOption('-i, --includes <path>', 'Path where before and after files already exist.')
+    .requiredOption('-t, --target <path>', 'Path where enhanced documentation is saved into.')
+    .option('-c, --clear', 'Override before and after files', false)
+    .option('-d, --defaultIncludes <path>', 'Path to file with default content for includes files')
+    .option('-b, --beforeIncludes <path>', 'Path to file with default before content for includes files')
+    .option('-a, --afterIncludes <path>', 'Path to file with default after content for includes files')
+    .action((path, options) => {
+        createIncludes(path, options.includes, options)
+        buildIncludes(path, options.includes, options.target, options)
+    })
+
 program.parse()
 
 /**

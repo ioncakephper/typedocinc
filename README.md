@@ -49,7 +49,7 @@ typedocinc --help
 typedocinc help [command]
 ```
 
-**Get help for `prepare` command**
+**Get help for `prepare | p` command**
 
 ```bash
 typedocinc help prepare
@@ -69,7 +69,7 @@ Options:
   -h, --help                    display help for command
 ```
 
-**Get help for `build` command**
+**Get help for `build | b` command**
 
 ```bash
 typedocinc help build
@@ -84,6 +84,27 @@ Options:
   -i, --includes <path>  Path where before and after files already exist.
   -t, --target <path>    Path where enhanced documentation is saved into.
   -h, --help             display help for command
+```
+
+**Get help for `generate | g` command**
+
+```bash
+typedocinc help generate
+```
+
+```txt
+Usage: typedocin generate|g [options] <path>
+
+prepare before and after files, enhance original documentation in <path> by mergind before and after files in the original documentation.   
+
+Options:
+  -i, --includes <path>         Path where before and after files already exist.
+  -t, --target <path>           Path where enhanced documentation is saved into.
+  -c, --clear                   Override before and after files (default: false)
+  -d, --defaultIncludes <path>  Path to file with default content for includes files
+  -b, --beforeIncludes <path>   Path to file with default before content for includes files
+  -a, --afterIncludes <path>    Path to file with default after content for includes files
+  -h, --help                    display help for command
 ```
 
 ## Functions
