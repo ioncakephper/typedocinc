@@ -8,8 +8,11 @@ const md = require('markdown-it')({
     linkify: true,
     typographer: true,
 });
+const mdnh = require('markdown-it-named-headers');
 
 const version = require('../package.json').version;
+
+md.use(mdnh);
 
 program
     .passCommandToAction(false)
@@ -55,6 +58,7 @@ program.parse()
 function createIncludes(source, includes, options) {
 
     if (fs.existsSync(path.resolve(source))) {
+
         let items = fs.readdirSync(source);
 
         let files = items.filter((item) => {
@@ -206,11 +210,13 @@ function getDefaultIncludesContent(options) {
         }
     }
 
-    let ext = path.extname(filename);
-    if (ext.length == 0)
-        filename += '.md';
-
     if (filename) {
+
+        let ext = path.extname(filename);
+        if (ext.length == 0) {
+            filename += '.md';
+        }
+
         if (fs.existsSync(filename)) {
             return fs.readFileSync(filename, 'utf-8')
         }
