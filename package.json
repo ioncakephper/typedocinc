@@ -1,6 +1,6 @@
 {
   "name": "typedocinc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Includes files in documentation generated with typedoc",
   "main": "./bin/cli.js",
   "bin": {
@@ -31,7 +31,5 @@
     "path": "^0.12.7",
     "markdown-it-named-headers": "0.0.4"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }
