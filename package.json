@@ -1,0 +1,24 @@
+{
+  "name": "typedocinc",
+  "version": "1.0.0",
+  "description": "Includes files in documentation generated with typedoc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ioncakephper/typedocinc.git"
+  },
+  "keywords": [
+    "typedoc",
+    "documentation",
+    "tsdoc"
+  ],
+  "author": "Ion Gireada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ioncakephper/typedocinc/issues"
+  },
+  "homepage": "https://github.com/ioncakephper/typedocinc#readme"
+}
