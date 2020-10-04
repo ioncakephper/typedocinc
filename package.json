@@ -1,6 +1,6 @@
 {
   "name": "typedocinc",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Includes files in documentation generated with typedoc",
   "main": "./bin/cli.js",
   "bin": {
