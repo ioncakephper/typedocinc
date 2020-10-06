@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting started with Typedocinc · Typedocinc</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Insert files content in documentation pages generated with `typedoc`."/><meta name="docsearch:version" content="1.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting started with Typedocinc · Typedocinc"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ioncakephper.github.io//typedocinc/"/><meta property="og:description" content="Insert files content in documentation pages generated with `typedoc`."/><meta property="og:image" content="https://ioncakephper.github.io//typedocinc/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://ioncakephper.github.io//typedocinc/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/typedocinc/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/typedocinc/js/scrollSpy.js"></script><link rel="stylesheet" href="/typedocinc/css/main.css"/><script src="/typedocinc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/typedocinc/en"><img class="logo" src="/typedocinc/img/favicon.ico" alt="Typedocinc"/><h2 class="headerTitleWithLogo">Typedocinc</h2></a><a href="/typedocinc/en/versions"><h3>1.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/typedocinc/docs/en/1.0.0/getting_started" target="_self">Docs</a></li><li class=""><a href="/typedocinc/docs/en/1.0.0/api" target="_self">API</a></li><li class=""><a href="/typedocinc/en/help" target="_self">Help</a></li><li class=""><a href="https://github.com/ioncakephper/typedocinc" target="_blank">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Typedocinc</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Typedocinc<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/typedocinc/docs/en/1.0.0/getting_started">Getting started</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Using examples<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/typedocinc/docs/en/1.0.0/quick_example">Quick example</a></li><li class="navListItem"><a class="navItem" href="/typedocinc/docs/en/1.0.0/applying_in_bulk">Applying in bulk</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Getting started with Typedocinc</h1></header><article><div><span><p>Insert files content in documentation pages generated with <code>typedoc</code>.</p>
+<p>With this tool, API documentation writers will insert their own content before and after the original content of a typedoc-generated documentation. For every <code>.html</code> file in the original documentation, the tool creates the <code>&lt;basename&gt;_before.md</code> and <code>&lt;basename&gt;_after.md</code> files. Next, the documentation writer adds content in these files. Finally, the tool merges the original documentation and the <code>before</code> and <code>after</code> files, and saves the new documentation.</p>
+<h2><a class="anchor" aria-hidden="true" id="install"></a><a href="#install" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install</h2>
+<p>Install <code>typedocinc</code> as <code>global</code>:</p>
+<pre><code class="hljs css language-bash">npm i typedocinc -g
+</code></pre>
+<p>Check it works:</p>
+<pre><code class="hljs css language-bash">typedocinc -h
+</code></pre>
+<pre><code class="hljs css language-txt"><span class="hljs-attribute">Usage</span>: typedocin [options] [command]
+
+<span class="vim">Includes <span class="hljs-keyword">files</span> in documentation generated with typedoc
+
+Option<span class="hljs-variable">s:</span>
+  -V, --<span class="hljs-keyword">version</span>                output the <span class="hljs-keyword">version</span> <span class="hljs-keyword">number</span>
+  -v, --<span class="hljs-keyword">verbose</span>                show detail <span class="hljs-keyword">messages</span> during execution. (defaul<span class="hljs-variable">t:</span> false)
+  -h, --<span class="hljs-keyword">help</span>                   <span class="hljs-keyword">display</span> <span class="hljs-keyword">help</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">command</span>
+
+Command<span class="hljs-variable">s:</span>
+  prepare|<span class="hljs-keyword">p</span> [<span class="hljs-keyword">options</span>] <span class="hljs-symbol">&lt;path&gt;</span>   prepare original documentation in <span class="hljs-symbol">&lt;path&gt;</span> by creating its before <span class="hljs-built_in">and</span> after <span class="hljs-keyword">files</span>
+  build|<span class="hljs-keyword">b</span> [<span class="hljs-keyword">options</span>] <span class="hljs-symbol">&lt;path&gt;</span>     enhance original documentation in <span class="hljs-symbol">&lt;path&gt;</span> by mergind before <span class="hljs-built_in">and</span> after <span class="hljs-keyword">files</span> in the original documentation.    
+  generate|g [<span class="hljs-keyword">options</span>] <span class="hljs-symbol">&lt;path&gt;</span>  prepare before <span class="hljs-built_in">and</span> after <span class="hljs-keyword">files</span>, enhance original documentation in <span class="hljs-symbol">&lt;path&gt;</span> by mergind before <span class="hljs-built_in">and</span> after <span class="hljs-keyword">files</span>   
+                               in the original documentation.
+  <span class="hljs-keyword">help</span> [<span class="hljs-keyword">command</span>]               <span class="hljs-keyword">display</span> <span class="hljs-keyword">help</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">command</span>
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<pre><code class="hljs css language-bash">typedocinc build original --includes original_includes --target original_modified
+</code></pre>
+<p>Build a modified documentation version in <code>original_modified</code>. Merge the original documentation in <code>original</code> folder with custom content in <code>original_includes</code> folder.</p>
+<p>The <code>original_includes</code> folder contains the files with the content you want to include either before (<code>_before</code>) or after (<code>_after</code>) the API documentation text in the <code>original</code>.</p>
+<p>For example, you want to include your custom text before API text in <code>original/index.html</code>. To this end, you will create the <code>original_includes/index_before.md</code> file. To include your custom text after the API text in <code>original/index.html</code>, you will create the <code>original_includes/index_after.md</code></p>
+<p>In <code>original_includes/index_before.md</code>:</p>
+<pre><code class="hljs css language-markdown">
+<span class="hljs-section">## Hello World!</span>
+
+Welcome to our software product API documentation. You can find as at [<span class="hljs-string">FintechOS</span>](<span class="hljs-link">http://fintechos.com</span>). Use Markdown notation to quickly add content such as paragraphs, headers, tables, links, bullet and item lists.
+
+</code></pre>
+<p>In <code>original_includes/index_after.md</code>:</p>
+<pre><code class="hljs css language-markdown">
+<span class="hljs-section">## Awesome, right?</span>
+
+We encourage you to contact us with your questions, comments and suggestions. Please feel free to contact our visit our [<span class="hljs-string">Community</span>](<span class="hljs-link">http://community.fintechos.com</span>).
+
+</code></pre>
+<pre><code class="hljs css language-bash">typedocinc prepare original --includes original_includes
+</code></pre>
+<pre><code class="hljs css language-bash">typedocinc prepare original --includes original_includes --clear
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="getting-help"></a><a href="#getting-help" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting help</h2>
+<h3><a class="anchor" aria-hidden="true" id="get-basic-help-information"></a><a href="#get-basic-help-information" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get basic help information</h3>
+<pre><code class="hljs css language-bash">// short option name
+typedocinc -h
+
+// or the long option name
+typedocinc --<span class="hljs-built_in">help</span>
+
+// or the <span class="hljs-built_in">help</span> <span class="hljs-built_in">command</span>
+typedocinc <span class="hljs-built_in">help</span> [<span class="hljs-built_in">command</span>]
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-help-for-prepare--p-command"></a><a href="#get-help-for-prepare--p-command" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get help for <code>prepare | p</code> command</h3>
+<pre><code class="hljs css language-bash">typedocinc <span class="hljs-built_in">help</span> prepare
+</code></pre>
+<pre><code class="hljs css language-txt"><span class="hljs-attribute">Usage</span>: typedocin prepare|p [options] &lt;path&gt;
+
+<span class="routeros">prepare original documentation <span class="hljs-keyword">in</span> &lt;path&gt; by creating its before <span class="hljs-keyword">and</span> after files
+
+Options:
+  -i, --includes &lt;path&gt;         Path where before <span class="hljs-keyword">and</span> after files will be created.
+  -c, --clear                   Override before <span class="hljs-keyword">and</span> after files (default: <span class="hljs-literal">false</span>)
+  -d, --defaultIncludes &lt;path&gt;  Path <span class="hljs-keyword">to</span> file with<span class="hljs-built_in"> default </span>content <span class="hljs-keyword">for</span> includes files
+  -b, --beforeIncludes &lt;path&gt;   Path <span class="hljs-keyword">to</span> file with<span class="hljs-built_in"> default </span>before content <span class="hljs-keyword">for</span> includes files
+  -a, --afterIncludes &lt;path&gt;    Path <span class="hljs-keyword">to</span> file with<span class="hljs-built_in"> default </span>after content <span class="hljs-keyword">for</span> includes files
+  -h, --help                    display help <span class="hljs-keyword">for</span> command
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get-help-for-build--b-command"></a><a href="#get-help-for-build--b-command" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get help for <code>build | b</code> command</h3>
+<pre><code class="hljs css language-bash">typedocinc <span class="hljs-built_in">help</span> build
+</code></pre>
+<pre><code class="hljs css language-txt"><span class="hljs-attribute">Usage</span>: typedocin build|b [options] &lt;path&gt;
+
+<span class="vim">enhance original documentation in <span class="hljs-symbol">&lt;path&gt;</span> by mergind before <span class="hljs-built_in">and</span> after <span class="hljs-keyword">files</span> in the original documentation.
+
+Option<span class="hljs-variable">s:</span>
+  -i, --includes <span class="hljs-symbol">&lt;path&gt;</span>  Path where before <span class="hljs-built_in">and</span> after <span class="hljs-keyword">files</span> already exist.
+  -t, --target <span class="hljs-symbol">&lt;path&gt;</span>    Path where enhanced documentation <span class="hljs-keyword">is</span> saved into.
+  -h, --<span class="hljs-keyword">help</span>             <span class="hljs-keyword">display</span> <span class="hljs-keyword">help</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">command</span>
+</span></code></pre>
+<p><strong>Get help for <code>generate | g</code> command</strong></p>
+<pre><code class="hljs css language-bash">typedocinc <span class="hljs-built_in">help</span> generate
+</code></pre>
+<pre><code class="hljs css language-txt"><span class="hljs-attribute">Usage</span>: typedocin generate|g [options] &lt;path&gt;
+
+<span class="routeros">
+prepare before <span class="hljs-keyword">and</span> after files, enhance original documentation <span class="hljs-keyword">in</span> &lt;path&gt; by mergind before <span class="hljs-keyword">and</span> after files <span class="hljs-keyword">in</span> the original documentation.   
+
+Options:
+  -i, --includes &lt;path&gt;         Path where before <span class="hljs-keyword">and</span> after files already exist.
+  -t, --target &lt;path&gt;           Path where enhanced documentation is saved into.
+  -c, --clear                   Override before <span class="hljs-keyword">and</span> after files (default: <span class="hljs-literal">false</span>)
+  -d, --defaultIncludes &lt;path&gt;  Path <span class="hljs-keyword">to</span> file with<span class="hljs-built_in"> default </span>content <span class="hljs-keyword">for</span> includes files
+  -b, --beforeIncludes &lt;path&gt;   Path <span class="hljs-keyword">to</span> file with<span class="hljs-built_in"> default </span>before content <span class="hljs-keyword">for</span> includes files
+  -a, --afterIncludes &lt;path&gt;    Path <span class="hljs-keyword">to</span> file with<span class="hljs-built_in"> default </span>after content <span class="hljs-keyword">for</span> includes files
+  -h, --help                    display help <span class="hljs-keyword">for</span> command
+</span></code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/typedocinc/docs/en/1.0.0/quick_example"><span>Quick example</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#install">Install</a></li><li><a href="#usage">Usage</a></li><li><a href="#getting-help">Getting help</a><ul class="toc-headings"><li><a href="#get-basic-help-information">Get basic help information</a></li><li><a href="#get-help-for-prepare--p-command">Get help for <code>prepare | p</code> command</a></li><li><a href="#get-help-for-build--b-command">Get help for <code>build | b</code> command</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/typedocinc/" class="nav-home"><img src="/typedocinc/img/favicon.ico" alt="Typedocinc" width="66" height="58"/></a><div><h5>Docs</h5><a href="/typedocinc/docs/getting_started.html">Getting Started (or other categories)</a><a href="/typedocinc/docs/quick_example.html">Guides (or other categories)</a><a href="/typedocinc/docs/api.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/typedocinc/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/typedocinc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/typedocinc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Ion Gireada</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                appId: 'app-id',
+                apiKey: 'my-api-key',
+                indexName: 'my-index-name',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>
